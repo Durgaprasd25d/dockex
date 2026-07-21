@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: dock-ex-backend
+    env: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm install && npm run build
+    startCommand: node dist/server.js
+    envVars:
+      - key: PORT
+        value: 5001
+      - key: NODE_ENV
+        value: production
+      - key: OCR_PROVIDER
+        value: tesseract
+      - key: MONGODB_URI
+        sync: false

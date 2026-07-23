@@ -9,7 +9,7 @@ export const config = {
   mongodbUri: process.env.MONGODB_URI || 'mongodb://localhost:27017/dock-ex',
   geminiApiKey: process.env.GEMINI_API_KEY || '',
   ocrProvider: (process.env.OCR_PROVIDER || 'tesseract').toLowerCase(),
-  uploadDir: process.env.UPLOAD_DIR || 'uploads',
+  uploadDir: process.env.VERCEL === '1' ? '/tmp/uploads' : (process.env.UPLOAD_DIR || 'uploads'),
   nodeEnv: process.env.NODE_ENV || 'development'
 };
 

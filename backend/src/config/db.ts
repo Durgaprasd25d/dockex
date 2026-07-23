@@ -8,6 +8,5 @@ export const connectDB = async (): Promise<void> => {
     logger.info(`MongoDB Connected: ${conn.connection.host}`);
   } catch (error: any) {
     logger.error(`Error connecting to MongoDB: ${error.message}`);
-    process.exit(1);
   }
 };

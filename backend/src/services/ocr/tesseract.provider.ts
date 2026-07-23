@@ -28,7 +28,7 @@ export class TesseractProvider implements IOcrProvider {
     } else {
       let worker;
       try {
-        worker = await createWorker('eng');
+        worker = await createWorker('eng', 1, { cachePath: '/tmp' });
         const ret = await worker.recognize(filePath);
         rawText = ret.data.text;
         logger.info(`Extracted text via Tesseract.js, character count: ${rawText.length}`);

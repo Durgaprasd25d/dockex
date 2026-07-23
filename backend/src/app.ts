@@ -20,6 +20,11 @@ app.use(express.urlencoded({ extended: true }));
 // Serve uploaded files statically for image previews
 app.use('/uploads', express.static(path.resolve(config.uploadDir)));
 
+// Default route for server verification
+app.get('/', (req, res) => {
+  res.status(200).send('Dock-Ex OCR Backend Server is running successfully!');
+});
+
 // Health check
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'SUCCESS', message: 'Dock-Ex OCR Backend is healthy.' });

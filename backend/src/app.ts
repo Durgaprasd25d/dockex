@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import path from 'path';
 import documentRoutes from './routes/document.routes';
+import { dbMiddleware } from './config/db';
 import { errorHandler } from './middleware/error.middleware';
 import { config } from './config/config';
 
@@ -31,7 +32,7 @@ app.get('/health', (req, res) => {
 });
 
 // Routes
-app.use('/api/documents', documentRoutes);
+app.use('/api/documents', dbMiddleware, documentRoutes);
 
 // Error Handler
 app.use(errorHandler);
